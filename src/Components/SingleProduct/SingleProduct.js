@@ -1,13 +1,12 @@
 import React from 'react';
 import {Button, Card} from "react-bootstrap";
 import Rating from "../Rating/Rating";
-import './SingleProduct.css'
 import {CartState} from "../../Context/Context";
-
+import '../css.css'
 const SingleProduct = ({product}) => {
 
     const {state: {cart}, dispatchers} = CartState()
-    console.log(cart)
+   // console.log(cart)
     const {name, image, ratings, prices, fastDelivery, inStock} = product;
     return (
         <div className="products">

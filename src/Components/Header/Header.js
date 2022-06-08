@@ -4,11 +4,11 @@ import {Link} from "react-router-dom";
 import {FaShoppingCart} from "react-icons/fa";
 import {CartState} from "../../Context/Context";
 import {AiFillDelete} from "react-icons/ai";
-import './Header.css'
+import '../css.css'
 const Header = () => {
 
     // get card sate data
-    const {state:{cart}, dispatchers} = CartState()
+    const {state:{cart}, dispatchers, filter, FilterDispatchers} = CartState()
     return (
         // design the header the form official website
         <Navbar bg="dark" variant="dark" style={{height: '80'}}>
@@ -17,7 +17,17 @@ const Header = () => {
                   <Link className="linkStyle" to="/">shopping cart</Link>
               </Navbar.Brand>
               <Navbar.Text className="search">
-                  <FormControl style={{width: '500'}} placeholder="Search" className="m-auto"/>
+                  <FormControl
+                      style={{width: '500'}}
+                      placeholder='search'
+                      className="m-auto"
+                      onChange={(e) => {
+                          FilterDispatchers({
+                              type: 'FILTER_BY-SEARCH',
+                              payload: e.target.value
+                          })
+                      }}
+                  />
               </Navbar.Text>
               <Nav>
                   <Dropdown>
